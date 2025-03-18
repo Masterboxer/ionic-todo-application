@@ -1,0 +1,27 @@
+<div style="text-align: center">
+  @for (todo of (todoService.todoItems$ | async); track todo.id) {
+  <ion-card>
+    <ion-badge style="position: absolute; left: 5px; top: 5px">{{
+      todo.id
+    }}</ion-badge>
+    <ion-icon
+      (click)="todoService.deleteTodo(todo.id)"
+      name="trash-outline"
+      style="
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        font-size: 22px;
+        color: #e72c2c;
+        z-index: 1;
+      "
+    ></ion-icon>
+    <ion-card-header>
+      <ion-card-title>{{ todo.todoTitle }}</ion-card-title>
+      <ion-card-subtitle>{{ todo.todoSubTitle }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content> {{ todo.todoDescription }} </ion-card-content>
+  </ion-card>
+  }
+</div>
